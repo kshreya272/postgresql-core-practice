@@ -1,8 +1,13 @@
-# Schema Definition
-This directory contains sql scripts responsible for creating database schemas
+# Schema Design
 
-# Purpose
-Schemas are used to logically separate database objects and avoid name conflicts
+This project follows a relational database design for modeling an academic management system.
 
-## File order
-- 01_schema.sql - creates the base schema used by all tables
+Key Design Decisions:
+
+- Students and Courses have a many-to-many relationship.
+- ENROLLMENTS acts as a junction table to resolve this relationship.
+- PERFORMANCE maintains a one-to-one relationship with ENROLLMENTS.
+- The attempt_number attribute enables modeling of course retakes.
+- UNIQUE(student_id, course_id, attempt_number) prevents duplicate enrollment attempts.
+
+The schema is designed to enforce data integrity through primary keys, foreign keys, and constraints.

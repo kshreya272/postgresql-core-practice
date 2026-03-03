@@ -1,0 +1,7 @@
+SELECT s.full_name, ROUND(AVG(p.total_marks), 2) AS avg_marks FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN performance p ON e.enrollment_id = p.enrollment_id GROUP BY s.full_name ORDER BY avg_marks DESC LIMIT 3;
+SELECT DISTINCT s.full_name, c.course_name FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN performance p ON e.enrollment_id = p.enrollment_id JOIN courses c ON e.course_id = c.course_id WHERE p.passed = false;
+SELECT c.course_name, COUNT(e.enrollment_id) AS total_enrollments FROM courses c JOIN enrollments e ON c.course_id = e.course_id GROUP BY c.course_name ORDER BY total_enrollments DESC LIMIT 1;
+SELECT grade, COUNT(*) AS total_students FROM performance GROUP BY grade ORDER BY grade;
+SELECT s.full_name, c.course_name, COUNT(*) AS attempts FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN courses c ON e.course_id = c.course_id GROUP BY s.full_name, c.course_name HAVING COUNT(*) > 1;
+SELECT s.full_name, c.course_name, p.total_marks FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN performance p ON e.enrollment_id = p.enrollment_id JOIN courses c ON e.course_id = c.course_id WHERE p.grade = 'A' ORDER BY p.total_marks DESC;
+SELECT s.full_name, c.course_name, p.total_marks FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN performance p ON e.enrollment_id = p.enrollment_id JOIN courses c ON e.course_id = c.course_id WHERE p.total_marks < 50 ORDER BY p.total_marks ASC;
