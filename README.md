@@ -33,9 +33,3 @@ queries/   → example SQL queries
    - tables
    - data
    - queries
-
-## Status
-This repository will be expanded with:
-- Indexing
-- Transactions
-- Performance analysis
